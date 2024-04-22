@@ -1,0 +1,7 @@
+entities:
+
+- name: client.RN
+  path: client_qemu
+@INIT_client_qemu_ENTITY_CONNECTIONS@
+
+@INIT_EXTERNAL_ENTITIES@
