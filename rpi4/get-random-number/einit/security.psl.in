@@ -1,0 +1,40 @@
+/* Security configuration of the "bn-880" example. */
+
+/* Definition of the execute interface. */
+execute: kl.core.Execute
+
+/* Import the file with the declaration of basic security policy aliases. */
+use nk.base._
+
+/* Declaration of entities. */
+use EDL Einit
+use EDL kl.core.Core
+@INIT_EXTERNAL_ENTITIES@
+
+use EDL client.RN
+
+/* Execution of entities allowed. */
+execute {
+    grant ()
+}
+
+/* Request messages allowed. */
+request {
+    grant ()
+}
+
+/* Response messages allowed. */
+response {
+    grant ()
+}
+
+/* Calls to the security interface are ignored. */
+security {
+    grant ()
+}
+
+/* Error messages allowed. */
+error {
+    grant ()
+}
+
