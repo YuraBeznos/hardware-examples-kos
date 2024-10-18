@@ -1,0 +1,33 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV PATH="${PATH}:/opt/KasperskyOS-Community-Edition-1.2.0.89/toolchain/bin"
+
+
+RUN apt-get update \
+    && apt-get install -y \
+        unzip \
+        sudo \
+        mc \
+        vim \
+        curl \
+        tar \
+        build-essential \
+        libcurl4-gnutls-dev \
+        python3 \
+        parted \
+        device-tree-compiler \
+        dosfstools \
+        fdisk \
+    && adduser --disabled-password --gecos "" user \
+    && echo 'user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+
+COPY ./KasperskyOS-Community-Edition-1.2.0.89_en.deb /tmp
+
+RUN apt-get install -y /tmp/KasperskyOS-Community-Edition-1.2.0.89_en.deb \
+    && rm /tmp/*.deb \
+    && echo '/opt/KasperskyOS-Community-Edition-1.2.0.89/toolchain/lib' >> /etc/ld.so.conf.d/KasperskyOS.conf \
+    && ldconfig
+
+
+CMD ["bash"]

@@ -4,11 +4,17 @@ run-kos-1-1-1-40:
 run-kos-1-2-0-45:
 	docker run --volume="`pwd`:/data" -w /data --user user -it --rm kos:1.2.0.45 bash
 
+run-kos-1-2-0-89:
+	docker run --volume="`pwd`:/data" -w /data --user user -it --rm kos:1.2.0.89 bash
+
 build-kos-1-1-1-40:
 	docker build -f Dockerfile-1.1.1.40 ./ -t kos:1.1.1.40
 
 build-kos-1-2-0-45:
 	docker build -f Dockerfile-1.2.0.45 ./ -t kos:1.2.0.45
+
+build-kos-1-2-0-89:
+	docker build -f Dockerfile-1.2.0.89 ./ -t kos:1.2.0.89
 
 build:
 	./cross-build.sh
